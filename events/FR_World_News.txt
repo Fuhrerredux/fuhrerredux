@@ -23,35 +23,7 @@ news_event = {
 	}
 }
 
-# Black Wednesday
-news_event = {
-	id = worldnews.2
-	immediate = {log = "[GetDateText]: [Root.GetName]: event worldnews.2"}
-	title = worldnews.2.t
-	desc = uknews.2.d
-	picture = GFX_news_event_ENG_parliament
-	major = yes
-	is_triggered_only = yes
-
-	trigger = {
-		NOT = { has_global_flag = black_wednesday }
-		ENG = { has_country_flag = ENG_stock_crash }
-		OR = {
-			has_global_flag = All_News_Events
-			has_global_flag = Important_News_Events
-		}
-	}
-
-	show_major = {
-		NOT = { tag = ENG }
-	}
-
-	immediate = { set_global_flag = black_wednesday }
-
-	option = {
-		name = worldnews.2.a
-	}
-}
+# Black Wednesday #MOVED TO FX_News_Europe
 
 # Istanbul Remilitarized Worldwide
 news_event = {
@@ -432,61 +404,6 @@ add_namespace = uknews
 # - Death of KGV
 ###########################
 
-news_event = {
-	id = uknews.1
-	immediate = {log = "[GetDateText]: [Root.GetName]: event uknews.1"}
-	title = uknews.1.t
-	desc = uknews.1.d
-	picture = GFX_news_event_generic_funeral
-
-	major = yes
-
-	trigger = {
-		date > 1936.1.20
-		NOT = { has_global_flag = gv_dead }
-		NOT = { tag = ENG }
-		ENG = { has_country_flag = kgv_dead }
-		OR = {
-			has_global_flag = All_News_Events
-			has_global_flag = Important_News_Events
-		}
-	}
-
-	show_major = {
-		NOT = { tag = ENG }
-	}
-
-	mean_time_to_happen = {
-		days = 5
-	}
-
-	immediate = { set_global_flag = gv_dead }
-
-	option = {
-		trigger = {
-			OR = {
-				tag = CAN
-				tag = AST
-				tag = NZL
-				tag = SAF
-				tag = RAJ
-			}
-		}
-		name = uknews.1.a
-	}
-
-	option = {
-		trigger = {
-			NOT = { tag = CAN }
-			NOT = { tag = AST }
-			NOT = { tag = NZL }
-			NOT = { tag = SAF }
-			NOT = { tag = RAJ }
-			NOT = { tag = NFL }
-		}
-		name = uknews.1.b
-	}	
-}
 
 ####################
 ### Germany News ###

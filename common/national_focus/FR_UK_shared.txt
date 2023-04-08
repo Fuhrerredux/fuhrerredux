@@ -28,9 +28,9 @@
 			factor = 1
 		}
 		
-	completion_reward = {
-		log = "[GetDateText]: [Root.GetName]: Focus ENG_black_wed"
-		add_political_power = 150
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus ENG_black_wed"
+			add_political_power = 150
 		}
 	}
 	

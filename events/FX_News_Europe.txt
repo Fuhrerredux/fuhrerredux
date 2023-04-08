@@ -1,0 +1,1180 @@
+# NEWS EVENTS
+# Hello dear FX modder. I see you are curious about the FX_News.txt file 
+# well, hear we put all News events files. 
+# Localisation for this should be put in file: FX_News_l_english.
+# News in Fuhrerredux, are split into regions
+# We have: 
+# eunews = europe news
+# afnews = african news
+# nanews = north american news
+# sanews = south american news
+# asnews = asian news 
+# menews = middle eastern news
+
+add_namespace = eunews
+
+#### UK NEWS ADDED AFTER THIS LINE
+# ids from 1 to 1000 (for now) are for only Uk's news
+
+###########################
+# - Death of KGV
+###########################
+news_event = {
+	id = eunews.1
+	immediate = {log = "[GetDateText]: [Root.GetName]: event eunews.1"}
+	title = eunews.1.t
+	desc = eunews.1.d
+	picture = GFX_news_event_generic_funeral
+
+	major = yes
+
+	trigger = {
+		date > 1936.1.20
+		NOT = { has_global_flag = gv_dead }
+		NOT = { tag = ENG }
+		ENG = { has_country_flag = kgv_dead }
+		OR = {
+			has_global_flag = All_News_Events
+			has_global_flag = Important_News_Events
+		}
+	}
+
+	show_major = {
+		NOT = { tag = ENG }
+	}
+
+	mean_time_to_happen = {
+		days = 5
+	}
+
+	immediate = { set_global_flag = gv_dead }
+
+	option = {
+		trigger = {
+			OR = {
+				tag = CAN
+				tag = AST
+				tag = NZL
+				tag = SAF
+				tag = RAJ
+			}
+		}
+		name = eunews.1.a
+	}
+
+	option = {
+		trigger = {
+			NOT = { tag = CAN }
+			NOT = { tag = AST }
+			NOT = { tag = NZL }
+			NOT = { tag = SAF }
+			NOT = { tag = RAJ }
+			NOT = { tag = NFL }
+		}
+		name = eunews.1.b
+	}	
+}
+
+# Black Wednesday
+news_event = { 
+	id = eunews.2
+	immediate = {log = "[GetDateText]: [Root.GetName]: event eunews.2"}
+	title = eunews.2.t
+	desc = eunews.2.d
+	picture = GFX_news_event_ENG_parliament
+	major = yes
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_global_flag = black_wednesday }
+		ENG = { has_country_flag = ENG_stock_crash }
+		OR = {
+			has_global_flag = All_News_Events
+			has_global_flag = Important_News_Events
+		}
+	}
+
+	show_major = {
+		NOT = { tag = ENG }
+	}
+
+	immediate = { set_global_flag = black_wednesday }
+
+	option = {
+		name = eunews.2.a
+	}
+}
+
+news_event = {
+	id = eunews.3
+	immediate = {log = "[GetDateText]: [Root.GetName]: event eunews.3"}
+    title = uknews.3.t
+    desc = eunews.3.d
+    picture = news_event_ast_navy
+
+    major = yes
+
+    trigger = {
+        DEN = { has_country_flag = den_1 }
+		#NOT = { has_global_flag = ENG_nat }
+    }
+	
+	is_triggered_only = yes 
+	
+	#immediate = {
+		#set_global_flag = ENG_nat
+	#}
+	
+	mean_time_to_happen = {
+        days = 1
+    }
+
+    option =  {
+        trigger = {
+            OR = {
+                tag = CAN
+                tag = AST
+                tag = NZL
+                tag = SAF
+                tag = RAJ
+                tag = ENG
+            }
+        }
+        name = eunews.3.a
+    }
+
+    option = {
+        trigger = {
+            NOT = {
+                AND = {
+					tag = CAN
+                    tag = AST
+                    tag = NZL
+                    tag = SAF
+                    tag = RAJ
+                    tag = ENG
+                }
+            }
+        }
+		name = eunews.3.b
+    }
+}
+
+news_event = {
+	id = eunews.4
+	immediate = {log = "[GetDateText]: [Root.GetName]: event eunews.4"}
+    title = "Britain Seizes the Panama Canal"
+    desc = eunews.4.d
+    picture = GFX_news_event_018
+
+    major = yes
+
+	is_triggered_only = yes
+	
+	#immediate = {
+		#set_global_flag = ENG_nat
+	#}
+	
+	mean_time_to_happen = {
+        days = 1
+    }
+
+    option =  {
+        trigger = {
+            OR = {
+                tag = CAN
+                tag = AST
+                tag = NZL
+                tag = SAF
+                tag = RAJ
+                tag = ENG
+            }
+        }
+        name = "The Panama Canal is vital to Imperial interests"
+    }
+
+    option = {
+        trigger = {
+            NOT = {
+                AND = {
+					tag = CAN
+                    tag = AST
+                    tag = NZL
+                    tag = SAF
+                    tag = RAJ
+                    tag = ENG
+                }
+            }
+        }
+        name = "British meddling in the Americas is sure to only create chaos"
+    }
+}
+
+# - Game-Start Indian Rebellion
+
+news_event = {
+	id = eunews.5
+	immediate = {log = "[GetDateText]: [Root.GetName]: event eunews.5"}
+    title = eunews.5.t
+    desc = eunews.5.d
+    picture = GFX_news_event_kiev_ruins
+
+    major = yes
+
+	is_triggered_only = yes
+	
+	#immediate = {
+		#set_global_flag = ENG_nat
+	#}
+	
+	mean_time_to_happen = {
+        days = 1
+    }
+
+    option =  {
+        trigger = {
+			OR = {
+				tag = ENG
+				tag = RAJ
+			}
+        }
+        name = "They will pay the price of rebelling against the Empire."
+    }
+	
+	option = {
+		trigger = {
+			OR = {
+                tag = CAN
+                tag = AST
+                tag = NZL
+                tag = SAF
+			}
+		}
+		name = "More instability in the Empire."
+	}
+	
+	option = {
+		trigger = {
+			original_tag = IND
+		}
+		name = "We will force Britain out of India!"
+	}
+
+    option = {
+        trigger = {
+			AND = {
+				NOT = { original_tag = CAN }
+				NOT = { original_tag = AST }
+				NOT = { original_tag = NZL }
+				NOT = { original_tag = SAF }
+				NOT = { original_tag = RAJ }
+				NOT = { original_tag = ENG }
+				NOT = { original_tag = IND }
+			}
+        }
+        name = "Perhaps the Empire is not as strong as people suspect"
+    }
+}
+
+# - Second IRB Rising
+
+news_event = {
+	id = eunews.6
+	immediate = {log = "[GetDateText]: [Root.GetName]: event eunews.6"}
+    title = "The Second IRB Rising"
+    desc = {
+		trigger = {
+			ENG = { has_country_flag = ire_rising }
+		}
+		text = eunews.6a.d 
+	}
+	 desc = {
+		trigger = {
+			ENG = { has_country_flag = ire_gw_rising }
+		}
+		text = eunews.6b.d 
+	}
+    picture = GFX_news_event_038
+
+    major = yes
+
+	is_triggered_only = yes
+	
+	#immediate = {
+		#set_global_flag = ENG_nat
+	#}
+	
+	mean_time_to_happen = {
+        days = 1
+    }
+
+    option =  {
+        trigger = {
+			OR = {
+				tag = ENG
+				tag = RAJ
+				tag = CAN
+                tag = AST
+                tag = NZL
+                tag = SAF
+			}
+        }
+        name = "They will be crushed!"
+		hidden_effect = {
+			IF = {
+				limit = {
+					tag = ENG
+				}
+				add_state_claim = 815
+				add_state_claim = 816
+				add_state_claim = 135
+				add_state_claim = 134
+			}
+		}
+    }
+	
+	option = {
+		trigger = {
+			original_tag = IRE
+		}
+		name = "We will win our freedom!"
+		hidden_effect = {
+			IF = {
+				limit = {
+					NOT = { FRA = { is_in_faction_with = ENG } }
+				}
+				FRA = { country_event = { id = uk.126 days = 7 } }
+			}
+			IF = {
+				limit = {
+					NOT = { GER = { is_in_faction_with = ENG } }
+				}
+				GER = { country_event = { id = uk.126 days = 7 } }
+			}
+			IF = {
+				limit = {
+					NOT = { USA = { is_in_faction_with = ENG } }
+				}
+				USA = { country_event = { id = uk.126 days = 7 } }
+			}
+		}
+	}
+
+    option = {
+        trigger = {
+			AND = {
+				NOT = { original_tag = CAN }
+				NOT = { original_tag = AST }
+				NOT = { original_tag = NZL }
+				NOT = { original_tag = SAF }
+				NOT = { original_tag = RAJ }
+				NOT = { original_tag = ENG }
+				NOT = { original_tag = IRE }
+			}
+        }
+        name = "Proof that the Irish spirit can never be conquered."
+    }
+}
+
+# - UK driven from India
+
+news_event = {
+	id = eunews.7
+	immediate = {log = "[GetDateText]: [Root.GetName]: event eunews.7"}
+    title = "The British are driven from India"
+    desc = eunews.7.d
+    picture = GFX_news_event_indian_parade
+
+    major = yes
+
+	is_triggered_only = yes
+	
+	#immediate = {
+		#set_global_flag = ENG_nat
+	#}
+	
+	mean_time_to_happen = {
+        days = 1
+    }
+
+	option =  {
+        trigger = {
+			original_tag = ENG
+        }
+        name = "We will return!"
+    }
+	
+    option =  {
+        trigger = {
+			OR = {
+				tag = RAJ
+				tag = CAN
+                tag = AST
+                tag = NZL
+                tag = SAF
+			}
+        }
+        name = "A disastrous day for the Empire."
+    }
+	
+	option = {
+		trigger = {
+			original_tag = IND
+		}
+		name = "Victory is ours!"
+	}
+
+    option = {
+        trigger = {
+			AND = {
+				NOT = { original_tag = CAN }
+				NOT = { original_tag = AST }
+				NOT = { original_tag = NZL }
+				NOT = { original_tag = SAF }
+				NOT = { original_tag = RAJ }
+				NOT = { original_tag = ENG }
+				NOT = { original_tag = IND }
+			}
+        }
+        name = "This will significantly weaken the Empire"
+    }
+}
+
+# - British Empire Games of 1938
+
+news_event = {
+	id = eunews.8
+	immediate = {log = "[GetDateText]: [Root.GetName]: event eunews.8"}
+    title = "British Empire Games of 1938"
+	desc = eunews.8.d
+    #desc = {
+		#trigger = {
+			#AST = { has_country_flag = 38winner }
+		#}
+		#text = eunewsaus.8
+	#}
+	#desc = {
+		#trigger = {
+			#ENG = { has_country_flag = eng38winner }
+		#}
+		#text = eunewseng.8
+	#}
+	#desc = {
+		#trigger = {
+			#ENG = { has_country_flag = sco38winner }
+		#}
+		#text = eunewssco.8
+	#}
+	#desc = {
+		#trigger = {
+			#ENG = { has_country_flag = wal38winner }
+		#}
+		#text = eunewswal.8
+	#}
+	#desc = {
+		#trigger = {
+			#ENG = { has_country_flag = ire38winner }
+		#}
+		#text = eunewsire.8
+	#}
+	#desc = {
+		#trigger = {
+			#CAN = { has_country_flag = 38winner }
+		#}
+		#text = eunewscan.8
+	#}
+	#desc = {
+		#trigger = {
+			#NZL = { has_country_flag = 38winner }
+		#}
+		#text = eunewsnzl.8
+	#}
+	#desc = {
+		#trigger = {
+			#SAF = { has_country_flag = 38winner }
+		#}
+		#text = eunewssaf.8
+	#}
+	#desc = {
+		#trigger = {
+			#SAF = { has_country_flag = rho38winner }
+		#}
+		#text = eunewsrho.8
+	#}
+	#desc = {
+		#trigger = {
+			#RAJ = { has_country_flag = 38winner }
+		#}
+		#text = eunewsraj.8
+	#}
+	#desc = {
+		#trigger = {
+			#CAN = { has_country_flag = new38winner }
+		#}
+		#text = eunewsnew.8
+	#}
+    picture = GFX_news_event_053
+
+    major = no
+
+	is_triggered_only = yes
+
+	option =  {
+        name = "An intense competition!"
+		add_political_power = 50
+    }
+}
+
+# - London Economic Conference
+
+news_event = {
+	id = eunews.9
+	immediate = {log = "[GetDateText]: [Root.GetName]: event eunews.9"}
+    title = "The London Economic Conference"
+    desc = eunews.9.d
+    picture = news_event_ast_navy
+
+    major = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		IF = {
+			limit = {
+				AND = {
+					OR = {
+						original_tag = FRA
+						original_tag = ITA
+						original_tag = USA
+						original_tag = JAP
+					}
+					OR = {
+						has_government = valkist 
+						has_government = paternal_autocrat 
+						has_government = libertarian_socialist 
+						has_government = collectivist 
+						has_government = vanguardist 
+					}
+				}
+			}
+			set_country_flag = lec1
+		}
+	}
+
+    option =  {
+        trigger = {
+			OR = {
+				original_tag = ENG
+				AND = {
+					original_tag = FRA
+					NOT = { has_government = valkist }
+					NOT = { has_government = paternal_autocrat }
+					NOT = { has_government = libertarian_socialist }
+					NOT = { has_government = collectivist }
+					NOT = { has_government = vanguardist }
+					NOT = { has_war_with = ENG }
+				}
+				AND = {
+					original_tag = USA
+					NOT = { has_government = valkist }
+					NOT = { has_government = paternal_autocrat }
+					NOT = { has_government = libertarian_socialist }
+					NOT = { has_government = collectivist }
+					NOT = { has_government = vanguardist }
+					NOT = { has_war_with = ENG }
+				}
+				AND = {
+					original_tag = ITA
+					NOT = { has_government = valkist }
+					NOT = { has_government = paternal_autocrat }
+					NOT = { has_government = libertarian_socialist }
+					NOT = { has_government = collectivist }
+					NOT = { has_government = vanguardist }
+					NOT = { has_war_with = ENG }
+				}
+				AND = {
+					original_tag = JAP
+					NOT = { has_government = valkist }
+					NOT = { has_government = paternal_autocrat }
+					NOT = { has_government = libertarian_socialist }
+					NOT = { has_government = collectivist }
+					NOT = { has_government = vanguardist }
+					NOT = { has_war_with = ENG }
+				}
+			}
+        }
+        name = "Only through co-operation can economic difficulties be lessened"
+		add_timed_idea = {
+			idea = eco_conf1
+			days = 365
+		}
+    }
+
+    option = {
+        trigger = {
+			OR = {
+				AND = {
+					NOT = { original_tag = ENG }
+					NOT = { original_tag = FRA }
+					NOT = { original_tag = USA }
+					NOT = { original_tag = ITA }
+					NOT = { original_tag = JAP }
+				}
+				has_country_flag = lec1
+			}
+        }
+        name = "Great Powers co-operating? Now we know things are bad."
+    }
+}
+
+# - Imperial Conference Foreign Policy
+
+news_event = {
+	id = eunews.10
+	immediate = {log = "[GetDateText]: [Root.GetName]: event eunews.10"}
+    title = "British Imperial Conference of 1937"
+    desc = {
+		trigger = {
+			ENG = { has_country_flag = ENG_c_imperial }
+		}
+		text = eunews.10a.d
+	}
+	desc = {
+		trigger = {
+			ENG = { has_country_flag = ENG_c_inter }
+		}
+		text = eunews.10b.d
+	}
+	desc = {
+		trigger = {
+			ENG = { has_country_flag = ENG_c_isol }
+		}
+		text = eunews.10c.d
+	}
+    picture = GFX_news_event_019
+
+    major = yes
+	
+	show_major = {
+		NOT = { tag = ENG }
+	}
+	
+	is_triggered_only = yes
+
+    option =  {
+        trigger = {
+			ENG = { has_country_flag = ENG_c_imperial }
+			NOT = { original_tag = ENG }
+        }
+        name = "The British Lion has awoken from its slumber"
+    }
+	
+	option =  {
+        trigger = {
+			ENG = { has_country_flag = ENG_c_inter }
+			NOT = { original_tag = ENG }
+        }
+        name = "Sounds like they're using democracy as an excuse for belligerence"
+    }
+	
+	option =  {
+        trigger = {
+			ENG = { has_country_flag = ENG_c_isol }
+			NOT = { original_tag = ENG }
+        }
+        name = "It seems the Great War had a profound effect on the Empire"
+    }
+	
+	option = {
+		trigger = {
+			AND = {
+				ENG = { has_country_flag = ENG_c_imperial }
+				original_tag = ENG
+			}
+        }
+		name = "Our imperial burden"
+	}
+	
+	option = {
+		trigger = {
+			AND = {
+				ENG = { has_country_flag = ENG_c_inter }
+				original_tag = ENG
+			}
+        }
+		name = "In the defense of liberty!"
+	}
+	
+	option = {
+		trigger = {
+			AND = {
+				ENG = { has_country_flag = ENG_c_isol }
+				original_tag = ENG
+			}
+        }
+		name = "We must avoid another Great War"
+	}
+}
+
+news_event = {
+	id = eunews.11
+	immediate = {log = "[GetDateText]: [Root.GetName]: event eunews.11"}
+    title = "The Fourth Boer War"
+    desc = eunews.11.d
+    picture = GFX_news_event_saf_soldiers
+
+    major = yes
+
+	is_triggered_only = yes
+
+    option =  {
+        trigger = {
+			OR = {
+				original_tag = ENG
+				original_tag = SAF
+				original_tag = AST
+				original_tag = CAN
+				original_tag = NZL
+			}
+        }
+        name = "We will restore order to South Africa!"
+    }
+	
+	option =  {
+        trigger = {
+			AND = {
+				NOT = { original_tag = ENG }
+				NOT = { original_tag = SAF }
+				NOT = { original_tag = AST }
+				NOT = { original_tag = NZL }
+				NOT = { original_tag = CAN }
+				NOT = { original_tag = ZAF }
+			}
+        }
+        name = "Will the Boers ever give up?"
+		hidden_effect = {
+			IF = {
+				limit = {
+					AND = {
+						original_tag = GER
+						has_capitulated = no 
+					}
+				}
+				country_event = { id = emp.511 days = 7 }
+			}
+			IF = {
+				limit = {
+					AND = {
+						original_tag = FRA
+						has_capitulated = no 
+					}
+				}
+				country_event = { id = emp.511 days = 7 }
+			}
+			IF = {
+				limit = {
+					AND = {
+						original_tag = HOL
+						has_capitulated = no 
+					}
+				}
+				country_event = { id = emp.511 days = 7 }
+			}
+		}
+    }
+	
+	option =  {
+        trigger = {
+			original_tag = ZAF
+        }
+        name = "Freedom will be ours!"
+    }
+}
+
+news_event = {
+	id = eunews.12
+	immediate = {log = "[GetDateText]: [Root.GetName]: event eunews.12"}
+    title = "India leaves the Empire"
+    desc = eunews.12.d
+    picture = GFX_news_event_indian_parade
+
+    major = yes
+
+	is_triggered_only = yes
+
+    option =  {
+        trigger = {
+			OR = {
+				original_tag = ENG
+				original_tag = SAF
+				original_tag = AST
+				original_tag = CAN
+				original_tag = NZL
+			}
+        }
+        name = "We will deal with them eventually"
+    }
+	
+	option =  {
+        trigger = {
+			AND = {
+				NOT = { original_tag = ENG }
+				NOT = { original_tag = SAF }
+				NOT = { original_tag = AST }
+				NOT = { original_tag = NZL }
+				NOT = { original_tag = CAN }
+			}
+        }
+        name = "The crown jewel of the Empire is gone"
+    }
+	
+	option =  {
+        trigger = {
+			original_tag = IND
+        }
+        name = "Freedom!"
+		drop_cosmetic_tag = yes
+    }
+}
+
+news_event = {
+	id = eunews.13
+	immediate = {log = "[GetDateText]: [Root.GetName]: event eunews.13"}
+    title = "Rebirth of the Entente Cordiale"
+    desc = eunews.13.d
+    picture = GFX_news_event_057
+
+    major = yes
+
+	is_triggered_only = yes
+
+    option =  {
+        trigger = {
+			is_in_faction_with = FRA
+        }
+        name = "Victory will be ours!"
+    }
+	
+	option =  {
+        trigger = {
+			has_war_with = FRA
+        }
+        name = "Look at how they huddle together like cornered rats!"
+    }
+	
+	option =  {
+        trigger = {
+			AND = {
+				NOT = { is_in_faction_with = FRA }
+				NOT = { has_war_with = FRA }
+			}
+        }
+        name = "Even together they may be unable to stand against Germany"
+    }
+}
+
+news_event = {
+	id = eunews.14
+	immediate = {log = "[GetDateText]: [Root.GetName]: event eunews.14"}
+    title = "Hyde Park Assassination"
+    desc = eunews.14.d
+    picture = GFX_news_event_royal_visit
+
+    major = yes
+
+	is_triggered_only = yes
+	
+	show_major = {
+		NOT = { tag = ENG }
+	}
+
+    option =  {
+        trigger = {
+			is_puppet_of = ENG
+        }
+        name = "We must stand with Britain to keep chaos at bay"
+    }
+	
+	option =  {
+        trigger = {
+			NOT = { is_puppet_of = ENG }
+        }
+        name = "Another blow to the Empire's stability"
+    }
+}
+
+news_event = {
+	id = eunews.15
+	immediate = {log = "[GetDateText]: [Root.GetName]: event eunews.15"}
+    title = "The End of the Empire"
+    desc = eunews.15.d
+    picture = GFX_news_event_worker_protests
+
+    major = yes
+
+	is_triggered_only = yes
+	
+	show_major = {
+		NOT = { tag = ENG }
+	}
+
+    option =  {
+        trigger = {
+			OR = {
+				tag = CAN
+				tag = AST
+				tag = NZL
+				tag = RAJ
+				tag = SAF
+			}
+        }
+        name = "We must stand strong in these trying days"
+    }
+	
+	option =  {
+        trigger = {
+			AND = {
+				NOT = { tag = CAN }
+				NOT = { tag = AST }
+				NOT = { tag = NZL }
+				NOT = { tag = RAJ }
+				NOT = { tag = SAF }
+			}
+        }
+        name = "Opportunity and anarchy abound across the former Imperial lands."
+    }
+}
+
+news_event = {
+	id = eunews.16
+	immediate = {log = "[GetDateText]: [Root.GetName]: event eunews.16"}
+    title = "Birth of the Imperial Federation"
+    desc = eunews.16.d
+    picture = GFX_news_event_053
+
+    major = yes
+
+	is_triggered_only = yes
+	
+	show_major = {
+		NOT = { tag = ENG }
+	}
+
+    option =  {
+        name = "And what will the Empire do with this new-found power?"
+    }
+}
+
+news_event = {
+	id = eunews.18
+	immediate = {log = "[GetDateText]: [Root.GetName]: event eunews.18"}
+	title = eunews.18.t
+	desc = eunews.18.d
+	picture = GFX_news_event_french_fleet_scuttled
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	show_major = {
+		NOT = { original_tag = ENG }
+		NOT = { original_tag = FRA }
+	}
+	
+	option = {
+		trigger = {
+			is_in_faction_with = ENG
+		}
+		name = "France cannot stand against the might of the Royal Navy"
+	}
+	
+	option = {
+		trigger = {
+			is_in_faction_with = FRA
+		}
+		name = "As suspected the Royal Navy is a toothless tiger"
+	}
+	
+	option = {
+		trigger = {
+			original_tag = GER
+			is_puppet = no
+			NOT = {
+				is_in_faction_with = ENG
+				is_in_faction_with = FRA
+			}
+		}
+		name = "The fools fight amongst one another"
+	}
+	
+	option = {
+		trigger = {
+			NOT = {
+				is_in_faction_with = ENG
+				is_in_faction_with = FRA
+				original_tag = GER
+			}
+		}
+		name = "France and Britain are once again on the brink of war."
+	}
+}
+
+news_event = {
+	id = eunews.19
+	immediate = {log = "[GetDateText]: [Root.GetName]: event eunews.19"}
+	title = "Anglo-French Diplomatic Stand-Off"
+	desc = {
+		trigger = {
+			ENG = { has_country_flag = ear_complaint }
+		}
+		text = eunews.19a.d
+	}
+	desc = {
+		trigger = {
+			ENG = { has_country_flag = ear_rejected }
+		}
+		text = eunews.19b.d
+	}
+	picture = GFX_news_event_kenya_army
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		trigger = {
+			is_in_faction_with = ENG
+		}
+		name = "The French should stop sticking their noses in other nation's affairs."
+	}
+	
+	option = {
+		trigger = {
+			is_in_faction_with = FRA
+		}
+		name = "British Imperialism has only made Africa a worse place than before."
+	}
+	
+	option = {
+		trigger = {
+			NOT = {
+				is_in_faction_with = ENG
+				is_in_faction_with = FRA
+			}
+		}
+		name = "More instability in Africa"
+	}
+}
+
+news_event = {
+	id = eunews.20
+	immediate = {log = "[GetDateText]: [Root.GetName]: event eunews.20"}
+	title = {
+		trigger = {
+			ENG = { has_country_flag = ear_covert }
+		}
+		text = "Anglo-French Diplomatic Row"
+	}
+	title = {
+		trigger = {
+			ENG = { has_country_flag = ear_embargo }
+		}
+		text = "Imperial Embargo on French Goods"
+	}
+	desc = {
+		trigger = {
+			ENG = { has_country_flag = ear_complaint }
+		}
+		text = eunews.20a.d
+	}
+	desc = {
+		trigger = {
+			ENG = { has_country_flag = ear_rejected }
+		}
+		text = eunews.20b.d
+	}
+	picture = GFX_news_event_kenya_army
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		trigger = {
+			is_in_faction_with = ENG
+		}
+		name = "The French should stop sticking their noses in other nation's affairs."
+	}
+	
+	option = {
+		trigger = {
+			is_in_faction_with = FRA
+		}
+		name = "British Imperialism has only made Africa a worse place than before."
+	}
+	
+	option = {
+		trigger = {
+			NOT = {
+				is_in_faction_with = ENG
+				is_in_faction_with = FRA
+			}
+		}
+		name = "This does not bode well for peace"
+	}
+}
+
+# - Indian Rebels Surrender 
+
+news_event = {
+	id = eunews.21
+	immediate = {log = "[GetDateText]: [Root.GetName]: event eunews.21"}
+	title = {
+		trigger = {
+			ENG = { has_country_flag = indian_armistice }
+		}
+		text = "Successful Negotiations in India"
+	}
+	title = {
+		trigger = {
+			NOT = { ENG = { has_country_flag = indian_armistice } }
+		}
+		text = "Indian Rebels Surrender"
+	}
+	desc = {
+		trigger = {
+			ENG = { has_country_flag = indian_armistice }
+		}
+		text = eunews.21a.d
+	}
+	desc = {
+		trigger = {
+			NOT = { ENG = { has_country_flag = indian_armistice } }
+		}
+		text = eunews.21b.d
+	}
+	picture = GFX_news_event_kiev_ruins
+	
+	is_triggered_only = yes
+	
+	major = yes
+	
+	show_major = {
+		NOT = { original_tag = ENG }
+		NOT = { original_tag = RAJ }
+	}
+	
+	option = {
+		trigger = {
+			is_in_faction_with = ENG
+		}
+		name = "Stability in India returns at last"
+	}
+	
+	option = {
+		trigger = {
+			NOT = { is_in_faction_with = ENG }
+		}
+		name = "And the stock market report?"
+	}
+}

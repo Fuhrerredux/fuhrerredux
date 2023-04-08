@@ -1,5 +1,16 @@
-# News Events
-# created by: dax0102
+# NEWS EVENTS
+# Hello dear FX modder. I see you are curious about the FX_News.txt file 
+# well, hear we put all News events files. 
+# Localisation for this should be put in file: FX_News_l_english.
+# News in Fuhrerredux, are split into regions
+# We have: 
+# eunews = europe news
+# afnews = african news
+# nanews = north american news
+# sanews = south american news
+# asnews = asian news 
+# menews = middle eastern news
+
 
 add_namespace = fxnews
 

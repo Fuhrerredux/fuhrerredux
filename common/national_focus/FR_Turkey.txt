@@ -3,6 +3,8 @@
 #################################################################
 ## Created by VirtualHummingbird, with additions by SuperMarks ##
 #################################################################
+## For now removed, due to errors by thanasislanaras
+# REMOVE KEBAB
 
 focus_tree = {
 	id = turkey_focus
@@ -10,10 +12,10 @@ focus_tree = {
 	country = {
 		factor = 0
 
-		modifier = {
-			add = 10
-			tag = TUR
-		}
+		# modifier = {
+		# 	add = 10
+		# 	tag = TUR
+		# }
 	}
 
 	default = no

@@ -7,16 +7,6 @@ bookmarks = {
     default_country = "PHI"
     default = yes
     #### Majors
-    # "MAC" = {
-    #   history = "MAC_FUHRERREDUX_DESC"
-    #   ideology = authoritarian_democrat
-    #   ideas = {
-        
-    #   }
-    #   focuses = {
-        
-    #   }
-    # }
     "USA" = {
       history = "USA_FUHRERREDUX_DESC"
       ideology = market_liberal
